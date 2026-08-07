@@ -29,7 +29,7 @@ class PlanningController extends Controller
             ]);
 
             $candidateToken = $validated['candidateToken'] ?? 'VEH-TEST1234';
-            $quantities = array_column($validated['slots'], 'quantity');
+            $quantities = array_map(fn($slot) => (int) $slot['quantity'], $validated['slots']);
 
             $result = $this->service->processPlanning(
                 $validated['requestCode'],
@@ -37,7 +37,7 @@ class PlanningController extends Controller
                 $quantities
             );
 
-            $status = isset($result['created_at']) && empty($result['id']) ? 201 : 200; 
+            $status = isset($result['created_at']) && empty($result['id']) ? 201 : 200;
             return response()->json($result, $status);
 
         } catch (ValidationException $e) {
@@ -65,7 +65,7 @@ class PlanningController extends Controller
     public function show(int $id): JsonResponse
     {
         $result = $this->service->getDetail($id);
-        
+
         if (!$result) {
             return response()->json(['message' => 'Not found'], 404);
         }

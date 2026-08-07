@@ -46,7 +46,7 @@ class PlanningService
     {
         $offset = ($page - 1) * $perPage;
         $result = $this->repository->getHistory($perPage, $offset);
-        
+
         $formattedData = [];
         foreach ($result['data'] as $item) {
             $formattedData[] = $this->formatPlanningData($item);

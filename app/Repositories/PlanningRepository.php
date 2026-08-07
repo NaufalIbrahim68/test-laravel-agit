@@ -43,7 +43,7 @@ class PlanningRepository
     {
         $query = Planning::query();
         $total = $query->count();
-        $data = $query->orderBy('CreatedAt', 'desc')->offset($offset)->limit($limit)->get();
+        $data = $query->with('slots')->orderBy('CreatedAt', 'desc')->offset($offset)->limit($limit)->get();
 
         return [
             'data' => $data,
