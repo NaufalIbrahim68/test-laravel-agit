@@ -46,8 +46,8 @@ Menampilkan detail planning berdasarkan ID
 
 Referensi dokumentasi yang digunakan:
 
-Laravel Documentation
-Laravel Validation
-Laravel Database Transactions
-Laravel Eloquent Relationships
-PHP Documentation
+1. Laravel Documentation
+2. Laravel Validation
+3. Laravel Database Transactions
+4. Laravel Eloquent Relationships
+5. PHP Documentation
